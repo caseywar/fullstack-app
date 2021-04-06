@@ -36,4 +36,16 @@ describe('Party Favor routes', () => {
         expect(res.body).toEqual(expect.arrayContaining(favors));
       });
   });
+
+
+  it('gets a favor by id', async () => {
+    const res = await request(app)
+    .get('/api/v1/favors/1');
+    expect(res.body).toEqual({
+      id: '1',
+      favor: 'paper plates',
+      quantity: 10,
+      contributor: 'joe'
+    })
+  })
 });

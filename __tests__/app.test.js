@@ -21,4 +21,19 @@ describe('Party Favor routes', () => {
       });
     });
   })
+
+  it('gets a list of party favors with GET', async () => {
+
+    const favors = await Promise.all([
+      Favor.insert({ favor: 'paper plates', quantity: 10, contributor: 'joe' }),
+      Favor.insert({ favor: 'plastic cups', quantity: 50, contributor: 'clara' }),
+      Favor.insert({ favor: 'ice', quantity: 2, contributor: 'carl' }),
+    ])
+
+    return request(app)
+      .get('/api/v1/favors')
+      .then((res) => {
+        expect(res.body).toEqual(expect.arrayContaining(favors));
+      });
+  });
 });

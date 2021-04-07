@@ -2,6 +2,6 @@ DROP TABLE IF EXISTS favors;
 CREATE TABLE favors (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     favor TEXT NOT NULL,
-    quantitiy INTEGER,
+    quantity INTEGER,
     contributor TEXT
 );
